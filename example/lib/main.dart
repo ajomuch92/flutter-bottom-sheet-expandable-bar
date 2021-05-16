@@ -42,6 +42,7 @@ class MyHomePage extends StatelessWidget {
       ),
       bottomSheet: BottomBarSheet(
         buttonPosition: ButtonBottomBarPosition.center,
+        innerChild: Center(child: Text('Bottom sheet'),),
         children: [
           BottomSheetBarIcon(
             icon: Icon(Icons.home),

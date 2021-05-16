@@ -31,16 +31,17 @@ class BottomSheetBarIcon extends StatelessWidget {
       children: [
         FloatingActionButton(
           child: this.icon,
-          backgroundColor: this.color?.withOpacity(this.isActive == true? 1 : 0.5),
+          backgroundColor:
+              this.color?.withOpacity(this.isActive == true ? 1 : 0.5),
           mini: true,
           elevation: 0.0,
           onPressed: this.onTap,
         ),
         AnimatedContainer(
-          width: this.isActive == true? 10.0 : 0.0,
-          height: this.isActive == true? 5.0 : 0.0,
+          width: this.isActive == true ? 10.0 : 0.0,
+          height: this.isActive == true ? 5.0 : 0.0,
           decoration: BoxDecoration(
-            color: this.isActive == true? this.color : Colors.transparent,
+            color: this.isActive == true ? this.color : Colors.transparent,
             borderRadius: BorderRadius.circular(5.0),
           ),
           duration: const Duration(milliseconds: 500),
