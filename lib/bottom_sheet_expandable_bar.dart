@@ -92,46 +92,46 @@ class _BottomBarSheetState extends State<BottomBarSheet> {
 
   /// Value to indicate what child is selected
   int _indexSelected = 0;
-  
+
   /// List of BottomSheetBarIcon to show whitin the widget
   final List<BottomSheetBarIcon> children;
-  
+
   /// Value to indicate the position of the expandable button (center, end)
   final ButtonBottomBarPosition buttonPosition;
-  
+
   /// Bottom bar calor
   final Color backgroundColor;
-  
+
   /// Color for container when is expanded
   final Color backgroundBarColor;
-  
+
   /// Boolean value to show the expandable button
   final bool showExpandableButton;
-  
+
   /// Widget to render into the bottom sheet
   final Widget innerChild;
-  
+
   /// Double value to indicate when radius for corner on bottom bar
   final double bottomRadius;
-  
+
   /// Value to indicate the bottom bar height
   final double bottomBarHeight;
-  
+
   /// Value to indicate the bottom bar width
   final double bottomBarWidth;
-  
+
   /// Indicate the duration when expand bottom sheet
   final Duration duration;
-  
+
   /// Double value to indicate the bottom sheet height
   final double bottomSheetHeight;
-  
+
   /// Icon to show into expandable button
   final Widget iconExpand;
-  
+
   /// Color for expandable button
   final Color iconColor;
-  
+
   /// Function trigger when close bottom sheet
   final Function onClose;
 
@@ -197,7 +197,7 @@ class _BottomBarSheetState extends State<BottomBarSheet> {
 
     return BottomSheet(
       /// when on close is null, take an empty function
-      onClosing: this.onClose??(){},
+      onClosing: this.onClose ?? () {},
       builder: (BuildContext context) => AnimatedContainer(
         margin: EdgeInsets.all(20),
         decoration: BoxDecoration(

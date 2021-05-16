@@ -98,7 +98,7 @@ This widget allow to generate a bottom bar with the capability to expanto to a b
 | bottomSheetHeight  | Double value to indicate the bottom sheet height | False   | Screen height * 0.75  |
 | iconExpand  | Icon to show into the expandable button | False   | Icon(Icons.navigation) |
 | iconColor  | Expandable button color | False   | Colors.green |
-| onClose  | Function to call when bottom sheet is closed | false   | (){}  |
+| onClose  | Function to call when bottom sheet is closed | False   | (){}  |
 
 ### Expandable button at center
 
