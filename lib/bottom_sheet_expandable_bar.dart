@@ -110,11 +110,13 @@ class _BottomBarSheetState extends State<BottomBarSheet> {
       _children.add(_icon);
       _index++;
       if (_index == middle &&
-          this.buttonPosition == ButtonBottomBarPosition.center) {
+          this.buttonPosition == ButtonBottomBarPosition.center &&
+          this.showExpandableButton) {
         _children.add(_getShowButton());
       }
     }
-    if (this.buttonPosition == ButtonBottomBarPosition.end) {
+    if (this.buttonPosition == ButtonBottomBarPosition.end &&
+        this.showExpandableButton) {
       _children.add(_getShowButton());
     }
     return _children;
