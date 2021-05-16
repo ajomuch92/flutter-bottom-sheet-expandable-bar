@@ -1,12 +1,9 @@
 library bottom_sheet_expandable_bar;
+
 import 'package:flutter/material.dart';
 import 'package:bottom_sheet_expandable_bar/bottom_sheet_bar_icon.dart';
 
-
-enum ButtonBottomBarPosition {
-  center,
-  end
-}
+enum ButtonBottomBarPosition { center, end }
 
 class BottomBarSheet extends StatefulWidget {
   final List<BottomSheetBarIcon> children;
@@ -40,12 +37,11 @@ class BottomBarSheet extends StatefulWidget {
     this.iconExpand = const Icon(Icons.navigation),
     this.iconColor = Colors.green,
     this.onClose,
-    }) : super(key: key);
+  }) : super(key: key);
 
   @override
-  _BottomBarSheetState createState() => 
-    _BottomBarSheetState(
-      children: this.children, 
+  _BottomBarSheetState createState() => _BottomBarSheetState(
+      children: this.children,
       buttonPosition: this.buttonPosition,
       backgroundColor: this.backgroundColor,
       backgroundBarColor: this.backgroundBarColor,
@@ -58,8 +54,7 @@ class BottomBarSheet extends StatefulWidget {
       bottomSheetHeight: this.bottomSheetHeight,
       iconExpand: this.iconExpand,
       iconColor: this.iconColor,
-      onClose: onClose
-    );
+      onClose: onClose);
 }
 
 class _BottomBarSheetState extends State<BottomBarSheet> {
@@ -80,47 +75,46 @@ class _BottomBarSheetState extends State<BottomBarSheet> {
   final Color iconColor;
   final Function onClose;
 
-  _BottomBarSheetState({
-    this.children,
-    this.buttonPosition,
-    this.backgroundColor,
-    this.backgroundBarColor,
-    this.showExpandableButton,
-    this.innerChild,
-    this.bottomRadius,
-    this.bottomBarHeight,
-    this.bottomBarWidth,
-    this.duration,
-    this.bottomSheetHeight,
-    this.iconExpand,
-    this.iconColor,
-    this.onClose
-  });
+  _BottomBarSheetState(
+      {this.children,
+      this.buttonPosition,
+      this.backgroundColor,
+      this.backgroundBarColor,
+      this.showExpandableButton,
+      this.innerChild,
+      this.bottomRadius,
+      this.bottomBarHeight,
+      this.bottomBarWidth,
+      this.duration,
+      this.bottomSheetHeight,
+      this.iconExpand,
+      this.iconColor,
+      this.onClose});
 
   List<Widget> _getChildren() {
     List<Widget> _children = [];
-    int middle = (this.children.length / 2 ).ceil();
+    int middle = (this.children.length / 2).ceil();
     int _index = 0;
-    for(BottomSheetBarIcon el in this.children) {
+    for (BottomSheetBarIcon el in this.children) {
       int i = this.children.indexOf(el);
       BottomSheetBarIcon _icon = BottomSheetBarIcon(
-        icon: el.icon,
-        onTap: () {
-          setState(() {
-            _indexSelected = i;
-          });
-          el.onTap();
-        },
-        isActive: _indexSelected == i,
-        color: el.color
-      );
+          icon: el.icon,
+          onTap: () {
+            setState(() {
+              _indexSelected = i;
+            });
+            el.onTap();
+          },
+          isActive: _indexSelected == i,
+          color: el.color);
       _children.add(_icon);
       _index++;
-      if(_index == middle && this.buttonPosition == ButtonBottomBarPosition.center) {
+      if (_index == middle &&
+          this.buttonPosition == ButtonBottomBarPosition.center) {
         _children.add(_getShowButton());
       }
     }
-    if(this.buttonPosition == ButtonBottomBarPosition.end) {
+    if (this.buttonPosition == ButtonBottomBarPosition.end) {
       _children.add(_getShowButton());
     }
     return _children;
@@ -140,36 +134,38 @@ class _BottomBarSheetState extends State<BottomBarSheet> {
     Size _size = MediaQuery.of(context).size;
 
     return BottomSheet(
-      onClosing: this.onClose, 
+      onClosing: this.onClose,
       builder: (BuildContext context) => AnimatedContainer(
-            margin: EdgeInsets.all(20),
-            decoration: BoxDecoration(
-              color: !_showSecond? Colors.transparent: this.backgroundColor,
-              borderRadius: BorderRadius.circular(30)
+        margin: EdgeInsets.all(20),
+        decoration: BoxDecoration(
+            color: !_showSecond ? Colors.transparent : this.backgroundColor,
+            borderRadius: BorderRadius.circular(30)),
+        child: AnimatedCrossFade(
+            firstChild: Container(
+              height: this.bottomBarHeight,
+              width: this.bottomBarWidth ?? (_size.width * 0.9),
+              decoration: BoxDecoration(
+                borderRadius:
+                    BorderRadius.all(Radius.circular(this.bottomRadius)),
+                color: Colors.white,
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: _getChildren(),
+              ),
             ),
-            child: AnimatedCrossFade(
-                firstChild: Container(
-                  height: this.bottomBarHeight,
-                  width: this.bottomBarWidth??(_size.width * 0.9),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.all(Radius.circular(this.bottomRadius)),
-                    color: Colors.white,
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: _getChildren(),
-                  ),
+            secondChild: Container(
+                constraints: BoxConstraints.expand(
+                  height: this.bottomSheetHeight ?? (_size.height * 0.75),
                 ),
-                secondChild: Container(
-                  constraints: BoxConstraints.expand(height: this.bottomSheetHeight??(_size.height * 0.75),),
-                  padding: EdgeInsets.all(20),
-                  child: Stack(
-                    children: [
-                      Container(
-                        child: this.innerChild,
-                      ),
-                      Positioned(
+                padding: EdgeInsets.all(20),
+                child: Stack(
+                  children: [
+                    Container(
+                      child: this.innerChild,
+                    ),
+                    Positioned(
                         right: 0,
                         top: 0,
                         child: CloseButton(
@@ -177,16 +173,15 @@ class _BottomBarSheetState extends State<BottomBarSheet> {
                           onPressed: () {
                             setState(() => _showSecond = false);
                           },
-                        )
-                      )
-                    ],
-                  )
-                ),
-                crossFadeState: _showSecond? CrossFadeState.showSecond: CrossFadeState.showFirst,
-                duration: this.duration
-                ),
-            duration: this.duration,
-          ),
+                        ))
+                  ],
+                )),
+            crossFadeState: _showSecond
+                ? CrossFadeState.showSecond
+                : CrossFadeState.showFirst,
+            duration: this.duration),
+        duration: this.duration,
+      ),
     );
   }
 }
