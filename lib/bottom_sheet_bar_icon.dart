@@ -5,21 +5,21 @@ import 'package:flutter/material.dart';
 /// Class to generate the icons for bottom bar
 class BottomSheetBarIcon extends StatelessWidget {
   /// Icon color, when is not active appers with opacity
-  final Color color;
+  final Color? color;
 
   /// Icon to show within the widget
-  final Icon icon;
+  final Icon? icon;
 
   /// Function trigger when pressed the icon
-  final Function onTap;
+  final Function()? onTap;
 
   /// Boolean value to indicate when an icon is active
-  final bool isActive;
+  final bool? isActive;
 
   const BottomSheetBarIcon(
-      {Key key,
+      {Key? key,
       @required this.icon,
-      @required this.onTap,
+      this.onTap,
       this.color = Colors.black,
       this.isActive = false})
       : super(key: key);
@@ -31,16 +31,16 @@ class BottomSheetBarIcon extends StatelessWidget {
       children: [
         FloatingActionButton(
           child: this.icon,
-          backgroundColor: this.color.withOpacity(this.isActive ? 1 : 0.5),
+          backgroundColor: this.color?.withOpacity(this.isActive == true? 1 : 0.5),
           mini: true,
           elevation: 0.0,
           onPressed: this.onTap,
         ),
         AnimatedContainer(
-          width: this.isActive ? 10.0 : 0.0,
-          height: this.isActive ? 5.0 : 0.0,
+          width: this.isActive == true? 10.0 : 0.0,
+          height: this.isActive == true? 5.0 : 0.0,
           decoration: BoxDecoration(
-            color: this.isActive ? this.color : Colors.transparent,
+            color: this.isActive == true? this.color : Colors.transparent,
             borderRadius: BorderRadius.circular(5.0),
           ),
           duration: const Duration(milliseconds: 500),

@@ -12,47 +12,47 @@ class BottomBarSheet extends StatefulWidget {
   final List<BottomSheetBarIcon> children;
 
   /// Value to indicate the position of the expandable button (center, end)
-  final ButtonBottomBarPosition buttonPosition;
+  final ButtonBottomBarPosition? buttonPosition;
 
   /// Bottom bar calor
-  final Color backgroundBarColor;
+  final Color? backgroundBarColor;
 
   /// Color for container when is expanded
-  final Color backgroundColor;
+  final Color? backgroundColor;
 
   /// Boolean value to show the expandable button
   final bool showExpandableButton;
 
   /// Widget to render into the bottom sheet
-  final Widget innerChild;
+  final Widget? innerChild;
 
   /// Double value to indicate when radius for corner on bottom bar
   final double bottomRadius;
 
   /// Value to indicate the bottom bar height
-  final double bottomBarHeight;
+  final double? bottomBarHeight;
 
   /// Value to indicate the bottom bar width
-  final double bottomBarWidth;
+  final double? bottomBarWidth;
 
   /// Indicate the duration when expand bottom sheet
-  final Duration duration;
+  final Duration? duration;
 
   /// Double value to indicate the bottom sheet height
-  final double bottomSheetHeight;
+  final double? bottomSheetHeight;
 
   /// Icon to show into expandable button
-  final Widget iconExpand;
+  final Widget? iconExpand;
 
   /// Color for expandable button
-  final Color iconColor;
+  final Color? iconColor;
 
   /// Function trigger when close bottom sheet
-  final Function onClose;
+  final Function()? onClose;
 
   BottomBarSheet({
-    Key key,
-    @required this.children,
+    Key? key,
+    this.children = const [],
     this.buttonPosition = ButtonBottomBarPosition.center,
     this.backgroundColor = Colors.white,
     this.backgroundBarColor = Colors.white,
@@ -97,52 +97,52 @@ class _BottomBarSheetState extends State<BottomBarSheet> {
   final List<BottomSheetBarIcon> children;
 
   /// Value to indicate the position of the expandable button (center, end)
-  final ButtonBottomBarPosition buttonPosition;
+  final ButtonBottomBarPosition? buttonPosition;
 
   /// Bottom bar calor
-  final Color backgroundColor;
+  final Color? backgroundColor;
 
   /// Color for container when is expanded
-  final Color backgroundBarColor;
+  final Color? backgroundBarColor;
 
   /// Boolean value to show the expandable button
   final bool showExpandableButton;
 
   /// Widget to render into the bottom sheet
-  final Widget innerChild;
+  final Widget? innerChild;
 
   /// Double value to indicate when radius for corner on bottom bar
   final double bottomRadius;
 
   /// Value to indicate the bottom bar height
-  final double bottomBarHeight;
+  final double? bottomBarHeight;
 
   /// Value to indicate the bottom bar width
-  final double bottomBarWidth;
+  final double? bottomBarWidth;
 
   /// Indicate the duration when expand bottom sheet
-  final Duration duration;
+  final Duration? duration;
 
   /// Double value to indicate the bottom sheet height
-  final double bottomSheetHeight;
+  final double? bottomSheetHeight;
 
   /// Icon to show into expandable button
-  final Widget iconExpand;
+  final Widget? iconExpand;
 
   /// Color for expandable button
-  final Color iconColor;
+  final Color? iconColor;
 
   /// Function trigger when close bottom sheet
-  final Function onClose;
+  final Function()? onClose;
 
   _BottomBarSheetState(
-      {this.children,
+      {this.children = const [],
       this.buttonPosition,
       this.backgroundColor,
       this.backgroundBarColor,
-      this.showExpandableButton,
+      this.showExpandableButton = true,
       this.innerChild,
-      this.bottomRadius,
+      this.bottomRadius = 50.0,
       this.bottomBarHeight,
       this.bottomBarWidth,
       this.duration,
@@ -163,7 +163,7 @@ class _BottomBarSheetState extends State<BottomBarSheet> {
             setState(() {
               _indexSelected = i;
             });
-            el.onTap();
+            el.onTap!();
           },
           isActive: _indexSelected == i,
           color: el.color);
@@ -242,8 +242,8 @@ class _BottomBarSheetState extends State<BottomBarSheet> {
             crossFadeState: _showSecond
                 ? CrossFadeState.showSecond
                 : CrossFadeState.showFirst,
-            duration: this.duration),
-        duration: this.duration,
+            duration: this.duration ?? Duration(milliseconds: 250)),
+        duration: this.duration ?? Duration(milliseconds: 250),
       ),
     );
   }
