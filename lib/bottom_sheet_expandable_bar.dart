@@ -136,7 +136,7 @@ class _BottomBarSheetState extends State<BottomBarSheet> {
     Size _size = MediaQuery.of(context).size;
 
     return BottomSheet(
-      onClosing: this.onClose,
+      onClosing: this.onClose??(){},
       builder: (BuildContext context) => AnimatedContainer(
         margin: EdgeInsets.all(20),
         decoration: BoxDecoration(
