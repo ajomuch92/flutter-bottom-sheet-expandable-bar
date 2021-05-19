@@ -1,6 +1,6 @@
 name: bottom_sheet_expandable_bar
 description: A package to show and bottom bar with the capability to expand and show a bottom sheet
-version: 0.1.0
+version: 0.1.1
 homepage: https://github.com/ajomuch92/flutter-bottom-sheet-expandable-bar
 
 environment:
