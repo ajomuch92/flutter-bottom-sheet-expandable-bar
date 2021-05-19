@@ -100,7 +100,7 @@ This widget allow to generate a bottom bar with the capability to expanto to a b
 | iconColor  | Expandable button color | False   | Colors.green |
 | onClose  | Function to call when bottom sheet is closed | False   | (){}  |
 | currentIndex  | Integer value to indicatet which tab is selected | False   | 0  |
-| curve  | Curve to use on enter bottom sheet animation | False   |   |
+| curve  | Curve to use on enter bottom sheet animation | False   |  Curves.ease |
 
 ### Expandable button at center
 

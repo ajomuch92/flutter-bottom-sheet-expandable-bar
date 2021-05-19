@@ -2,7 +2,7 @@ library bottom_sheet_expandable_bar;
 
 import 'package:flutter/material.dart';
 
-/// Class to generate the icons for bottom bar
+/// Class to generate the icons widget for bottom bar
 class BottomSheetBarIcon extends StatelessWidget {
   /// Icon color, when is not active appers with opacity
   final Color? color;
@@ -16,6 +16,9 @@ class BottomSheetBarIcon extends StatelessWidget {
   /// Boolean value to indicate when an icon is active
   final bool? isActive;
 
+  /// icon: Icon color, when is not active appers with opacity
+  /// color: Icon to show within the widget
+  /// onTap: Function trigger when pressed the icon
   const BottomSheetBarIcon(
       {Key? key,
       @required this.icon,

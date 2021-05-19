@@ -50,12 +50,28 @@ class BottomBarSheet extends StatefulWidget {
   /// Function trigger when close bottom sheet
   final Function()? onClose;
 
-  /// Value to indicate what child is selected
+  /// Value to indicate what icon tab is selected
   final int? currentIndex;
 
   /// Curve to use on animation
   final Curve curve;
 
+  /// children: List of BottomSheetBarIcon to show whitin the widget
+  /// buttonPosition: Value to indicate the position of the expandable button (center, end)
+  /// backgroundColor: Bottom bar calor
+  /// backgroundBarColor: Color for container when is expanded
+  /// showExpandableButton: Boolean value to show the expandable button
+  /// innerChild: Widget to render into the bottom sheet
+  /// bottomRadius: Double value to indicate when radius for corner on bottom bar
+  /// bottomBarHeight: Value to indicate the bottom bar height
+  /// bottomBarWidth: Value to indicate the bottom bar width
+  /// duration: Indicate the duration when expand bottom sheet
+  /// bottomSheetHeight: Double value to indicate the bottom sheet height
+  /// iconExpand: Icon to show into expandable button
+  /// iconColor: Color for expandable button
+  /// onClose: Function trigger when close bottom sheet
+  /// currentIndex: Value to indicate what icon tab is selected
+  /// curve: Curve to use on animation
   BottomBarSheet({
     Key? key,
     this.children = const [],
