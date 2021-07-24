@@ -147,7 +147,9 @@ class _BottomBarSheetState extends State<BottomBarSheet> {
       builder: (BuildContext context) => AnimatedContainer(
         margin: EdgeInsets.all(20),
         decoration: BoxDecoration(
-            color: !_showSecond ? widget.backgroundBarColor : widget.backgroundColor,
+            color: !_showSecond
+                ? widget.backgroundBarColor
+                : widget.backgroundColor,
             borderRadius: BorderRadius.circular(30)),
         child: AnimatedCrossFade(
             firstChild: Container(
