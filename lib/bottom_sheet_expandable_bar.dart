@@ -58,8 +58,8 @@ class BottomBarSheet extends StatefulWidget {
 
   /// children: List of BottomSheetBarIcon to show whitin the widget
   /// buttonPosition: Value to indicate the position of the expandable button (center, end)
-  /// backgroundColor: Bottom bar calor
-  /// backgroundBarColor: Color for container when is expanded
+  /// backgroundColor: Color for container when is expanded
+  /// backgroundBarColor: Bottom bar calor
   /// showExpandableButton: Boolean value to show the expandable button
   /// innerChild: Widget to render into the bottom sheet
   /// bottomRadius: Double value to indicate when radius for corner on bottom bar
@@ -147,7 +147,7 @@ class _BottomBarSheetState extends State<BottomBarSheet> {
       builder: (BuildContext context) => AnimatedContainer(
         margin: EdgeInsets.all(20),
         decoration: BoxDecoration(
-            color: !_showSecond ? Colors.transparent : widget.backgroundColor,
+            color: !_showSecond ? widget.backgroundBarColor : widget.backgroundColor,
             borderRadius: BorderRadius.circular(30)),
         child: AnimatedCrossFade(
             firstChild: Container(
@@ -156,7 +156,7 @@ class _BottomBarSheetState extends State<BottomBarSheet> {
               decoration: BoxDecoration(
                 borderRadius:
                     BorderRadius.all(Radius.circular(widget.bottomRadius)),
-                color: Colors.white,
+                // color: widget.backgroundBarColor,
               ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -165,6 +165,7 @@ class _BottomBarSheetState extends State<BottomBarSheet> {
               ),
             ),
             secondChild: Container(
+                // color: widget.backgroundColor,
                 constraints: BoxConstraints.expand(
                   height: widget.bottomSheetHeight ?? (_size.height * 0.75),
                 ),

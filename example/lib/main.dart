@@ -52,6 +52,8 @@ class _MyHomePageState extends State<MyHomePage> {
         innerChild: Center(child: Text('Bottom sheet'),),
         currentIndex: _currentIndex,
         curve: Curves.bounceIn,
+        backgroundBarColor: Colors.grey,
+        backgroundColor: Colors.yellowAccent,
         children: [
           BottomSheetBarIcon(
             icon: Icon(Icons.home),
