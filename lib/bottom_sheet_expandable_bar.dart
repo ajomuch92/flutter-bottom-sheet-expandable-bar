@@ -14,10 +14,10 @@ class BottomBarSheet extends StatefulWidget {
   /// Value to indicate the position of the expandable button (center, end)
   final ButtonBottomBarPosition? buttonPosition;
 
-  /// Bottom bar calor
+  /// Color for container when is expanded
   final Color? backgroundBarColor;
 
-  /// Color for container when is expanded
+  /// Bottom bar calor
   final Color? backgroundColor;
 
   /// Boolean value to show the expandable button
